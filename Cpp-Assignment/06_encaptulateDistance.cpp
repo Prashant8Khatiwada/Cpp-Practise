@@ -49,6 +49,7 @@ void outputDistance(Distance d)
 }
 
 // Function to add two distances and return the result
+// this is called passing objects as function argument
 Distance addDistances(Distance d1, Distance d2)
 {
     Distance d;
