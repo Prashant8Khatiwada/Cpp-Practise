@@ -1,57 +1,75 @@
-
 #include <iostream>
-#include <math.h>
+#include <cstdlib>
 using namespace std;
 
-// Dollar class
+// 1 dol = 131.84 rs
+
 class Dollar
 {
-    float dol;
-    float cent;
-
 public:
-    Dollar(float d, float c)
+    int dol, cent;
+    Dollar()
+    {
+        dol = 0;
+        cent = 0;
+    }
+    Dollar(int d, int c)
     {
         dol = d;
         cent = c;
     }
+    void display()
+    {
+        cout << "Dollar: " << dol << endl;
+        cout << "Cent: " << cent << endl;
+    }
 };
 
-// Rupees class
-class Rupees
+class Rupee
 {
-    float rs;
-    float paisa;
-
 public:
-    Rupees(float r, float p)
+    int rs, paisa;
+    Rupee()
+    {
+        rs = 0;
+        paisa = 0;
+    }
+    Rupee(int r, int p)
     {
         rs = r;
         paisa = p;
     }
+    void display()
+    {
+        cout << "Rupees: " << rs << endl;
+        cout << "Paisa: " << paisa << endl;
+    }
+
+    friend Rupee convert_to_dollar(Dollar);
+    friend Dollar convert_to_npr(Rupee &);
 };
 
-// function to convert Dollar to Rupees
-Rupees convertDolToRs(Dollar d)
+Rupee convert_to_dollar(Dollar obj)
 {
-    float dolRs, centRs;
-    dolRs = d.dol * 75.50;
-    centRs = d.cent * 0.7550;
-    int totalRs = trunc(dolRs + centRs);
-    int totalPaisa = round((dolRs + centRs - totalRs) * 100);
-    Rupees r(totalRs, totalPaisa);
-    return r;
+    Rupee res;
+    res.rs = obj.dol * 131;
+    res.paisa = obj.cent * 87;
+    return res;
+}
+Dollar convert_to_npr(Rupee &obj)
+{
+    Dollar res;
+    res.dol = obj.rs / 131;
+    res.cent = obj.paisa / 87;
+    return res;
 }
 
 int main()
 {
-    float dol, cent;
-    cout << "Enter the amount in Dollar: ";
-    cin >> dol;
-    cout << "Enter the amount in Cent: ";
-    cin >> cent;
-    Dollar d(dol, cent);
-    Rupees r = convertDolToRs(d);
-    cout << "The amount in Rupees is: " << r.rs << " Rs and " << r.paisa << " paisa.";
-    return 0;
+    Rupee R1, R2(234, 4), R3;
+    Dollar D1, D2(50, 2), D3;
+    D3 = convert_to_npr(R2);
+    D3.display();
+    R3 = convert_to_dollar(D2);
+    R3.display();
 }
