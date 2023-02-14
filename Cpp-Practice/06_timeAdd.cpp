@@ -10,7 +10,7 @@ private:
 public:
     void setTime();
     void getTime();
-    friend void addTime(Time T1, Time T2);
+    friend Time addTime(Time T1, Time T2);
 };
 
 // for time input
@@ -26,7 +26,7 @@ void Time::getTime()
 }
 
 // to add times
-void addTime(Time T1, Time T2)
+Time addTime(Time T1, Time T2)
 {
     Time T;
     T.hour = T1.hour + T2.hour;
@@ -43,15 +43,15 @@ void addTime(Time T1, Time T2)
         T.hour += T.minute / 60;
         T.minute = T.minute % 60;
     }
-
-    cout << "The sum is " << T.hour << "-hour " << T.minute << "-minute " << T.second << "-second " << endl;
+    return T;
+    // cout << "The sum is " << T.hour << "-hour " << T.minute << "-minute " << T.second << "-second " << endl;
 }
 int main()
 {
     Time T1, T2, T3;
     T1.setTime();
     T2.setTime();
-    addTime(T1, T2);
-    // T3.getTime();
+    T3 = addTime(T1, T2);
+    T3.getTime();
     return 0;
 }
