@@ -1,0 +1,26 @@
+// TYPES OF INHERITANCE 
+ 1. Single
+    A derived/child class with only one base/parent class is called single inheritance.
+ 2. Multilevel
+    A derived/child class with a base/parent class and that base/parent class is a derived/child class another base/parent class is called multilevel inheritance
+ 3. Multiple
+    A derived/child class with Multiple base/parent is called Multiple inheritance
+ 4. Heirarchical
+    Multiple child classes with same base class is called Heirarchical inheritance
+ 5. Hybrid
+    Combination of Multiple and Heirarchical inheritance is called Hybrid inheritance
+6.  Multipath
+    A child class with two parent classes and two parent classes have one common base class is called Multipath inheritance.
+
+//  MODES OF INHERITANCE
+ 1. Public (Visible to everyone)
+ 2. protected (Visible to current class and derived class only)
+ 3. private (Visible to current class only)
+
+ --------------------------------------------------------------------------
+ BASE CLASS | DERIVED CLASS    DERIVED CLASS     DERIVED CLASS
+            | Public Mode      Private Mode      Protected Mode
+ --------------------------------------------------------------------------
+ Private    | Not Inherited    Not Inherited     Not Inherited
+ Protected  | Protected        Private           Protected
+ Public     | Public           Private           Protected
